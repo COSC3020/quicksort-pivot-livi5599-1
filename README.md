@@ -19,3 +19,13 @@ quantitatively reason with them.
 Add your answer to this markdown file. [This
 page](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
 might help with the notation for mathematical expressions.
+
+-----
+
+A "good pivot" is a pivot that is placed in the middle range of an array.  According to the lecture slide on the intuition of the average case of quicksort, the probability that the randomly selected element is an element in the middle portion of the array is 1/2.
+
+When considering the median-to-three method for finding a pivot, I did a test on an array of five elements.  I selected three elements, and I ordered them in every way possible while keeping track of how many times the median element was placed in the middle, where it should be.  After doing this, I determined that there was a probability of 1/3 for this case.  Using this knowledge, I believe the average case is more likely to find a good pivot since 1/2 > 1/3.
+
+-----
+
+I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models.  All of the work is my own, except where stated otherwise.  I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
