@@ -26,15 +26,16 @@ A "good pivot" is a pivot that is placed in the middle range of an array.  Accor
 
 When considering the median-to-three method for finding a pivot, I wrote out all permutations of three elements (e1, e2, and e3, where e1 is the first element, e2 is the middle element, and e3 is the last element).  I created a table, which looks like:
 
-e1 | e2 | e3
-0    0    0
-0    0    1
-0    1    0
-1    0    0
-1    1    0
-0    1    1
-1    0    1
-1    1    1
+| e1 | e2 | e3 |
+| -- | -- | -- |
+| 0  | 0  | 0  |
+| 0  | 0  | 1  |
+| 0  | 1  | 0  |
+| 1  | 0  | 0  |
+| 1  | 1  | 0  |
+| 0  | 1  | 1  |
+| 1  | 0  | 1  |
+| 1  | 1  | 1  |
 
 1 represents when an element is the median element, and 0 represents when an element is not the median element.  Since a good pivot is an element in the middle range of the array, e2 should be the median element if a good pivot was chosen.  From this fact and by looking at the table, e2 is the median element 4/8 = 1/2 = 50% of the time.  This means the median-to-three method is equally as likely to pick a good pivot compared to the average case method as shown in the lecture slides.
 
