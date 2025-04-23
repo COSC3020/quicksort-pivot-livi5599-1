@@ -37,11 +37,22 @@ When considering the median-to-three method for finding a pivot, I wrote out all
 | 1  | 0  | 1  |
 | 1  | 1  | 1  |
 
-1 represents when an element is the median element, and 0 represents when an element is not the median element.  Since a good pivot is an element in the middle range of the array, e2 should be the median element if a good pivot was chosen.  From this fact and by looking at the table, e2 is the median element 4/8 = 1/2 = 50% of the time.  This means the median-to-three method is equally as likely to pick a good pivot compared to the average case method as shown in the lecture slides.
+1 represents when an element is the median element, and 0 represents when an element is not the median element.
+
+Here are the different combinations e1, e2, and e3:
+
+e1 < e2 < e3
+e1 < e3 < e2
+e2 < e1 < e3
+e2 < e3 < e1
+e3 < e1 < e2
+e3 < e2 < e1
+
+Looking at the 6 different combinations of the elements, each combination has a 16.67% chance of occuring.  Each element appears as the median 2 out of the 6 combinations, which is 33.33%.  The chance of the median element occuring in the middle portion of the element is 33.33%, as there are three portions to the array (left, middle, right), and an element will be placed in the middle portion 1/3 = 33.33% of the time.  Combining these probabilities, I get 83.33%, which argues that the median-to-three method is 33.33% more likely to pick a good pivot compared to the average input method.
 
 -----
 
-I received help from Khan Academy and ChatGPT.  I found a quicksort analysis on Khan Academy.  A portion of this analysis briefly talked about the median-to-three method.  I gave that portion of the analysis to ChatGPT, as I was unsure where the given fractions/percentages were coming from, and ChatGPT explained that they came from the number of possible ways to order a set of numbers.  This gave me the idea of building the table above, which led me to my answer.
+I received help from Khan Academy and ChatGPT.  I found a quicksort analysis on Khan Academy.  A portion of this analysis briefly talked about the median-to-three method.  I gave that portion of the analysis to ChatGPT, as I was unsure where the given fractions/percentages were coming from, and ChatGPT explained that they came from the number of possible ways to order a set of numbers.  This gave me the idea of building the table above.  ChatGPT also hinted to me that I need to consider more of what is going on with the values of the elements in the array, not just how the possible pivot elements are ordered, which led me to my answer.
 
 Khan Academy source: https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort
 
