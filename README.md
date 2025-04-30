@@ -24,40 +24,56 @@ might help with the notation for mathematical expressions.
 
 A "good pivot" is a pivot that is placed in the middle range of an array.  According to the lecture slide on the intuition of the average case of quicksort, the probability that the randomly selected element is an element in the middle portion of the array is 1/2.
 
-When considering the median-to-three method for finding a pivot, I wrote out all permutations of three elements (e1, e2, and e3, where e1 is the first element, e2 is the middle element, and e3 is the last element).  I created a table, which looks like:
+When considering the median-to-three method for finding a pivot, each of the three chosen elements have a chance of being a good pivot, too small, or too large.  If a good pivot is represented by M (for median), one that is too small represented by S, and one that is too large represented by L, these are the different ways the three elements chosen from the array could be represented:
 
-| e1 | e2 | e3 |
-| -- | -- | -- |
-| 0  | 0  | 0  |
-| 0  | 0  | 1  |
-| 0  | 1  | 0  |
-| 1  | 0  | 0  |
-| 1  | 1  | 0  |
-| 0  | 1  | 1  |
-| 1  | 0  | 1  |
-| 1  | 1  | 1  |
+MMM,
+SSS,
+LLL,
+MSS,
+MMS,
+MLL,
+SLL,
+SSL,
+LSS,
+SLM
 
-1 represents when an element is the median element, and 0 represents when an element is not the median element.
+These combinations each have different probabilities, as the probability of an element falling in the middle portion of the array is 1/2, and the probability of an element falling in the left/right portion of the array is 1/4.  These chances come from the fact that the middle portion of the array is twice as large as the left/right portions.
 
-Here are the different combinations e1, e2, and e3:
+Considering the chances given above, these are the probabilities of each of the combinations occuring:
 
-e1 < e2 < e3,
+MMM = 1/2 * 1/2 * 1/2 = 1/8
+SSS = 1/4 * 1/4 * 1/4 = 1/64
+LLL = 1/4 * 1/4 * 1/4 = 1/64
+MSS = 1/2 * 1/4 * 1/4 = 1/32
+MMS = 1/2 * 1/2 * 1/4 = 1/16
+MML = 1/2 * 1/2 * 1/4 = 1/16
+MLL = 1/2 * 1/4 * 1/4 = 1/32
+SLL = 1/4 * 1/4 * 1/4 = 1/64
+SSL = 1/4 * 1/4 * 1/4 = 1/64
+SLM = 1/4 * 1/4 * 1/2 = 1/32
 
-e1 < e3 < e2,
+Considering the combinations and all the different ways they can occur and how that effects their probabilities:
 
-e2 < e1 < e3,
+1 MMM -> 1/8
+1 SSS -> 1/64
+1 LLL -> 1/64
+3 MSS -> 3/32
+3 MMS -> 3/16
+3 MML -> 3/16
+3 MLL -> 3/32
+3 SLL -> 3/64
+3 SSL -> 3/64
+6 SLM -> 6/32
 
-e2 < e3 < e1,
+Now, adding the probabilities that result in a good pivot in proper position:
 
-e3 < e1 < e2,
+1/8 + 3/16 + 3/16 = 11/16 = 68.75%
 
-e3 < e2 < e1.
-
-Looking at the 6 different combinations of the elements, each combination has a 16.67% chance of occuring.  Each element appears as the median 2 out of the 6 combinations, which is 33.33%.  The chance of the median element occuring in the middle portion of the element is 33.33%, as there are three portions to the array (left, middle, right), and an element will be placed in the middle portion 1/3 = 33.33% of the time.  Combining these probabilities, I get 83.33%, which argues that the median-to-three method is 33.33% more likely to pick a good pivot compared to the average input method.
+This means the median-to-three method has a 68.75% chance to pick a good pivot, which shows that this method is 18.75% more likely to pick a good pivot than the average input method.
 
 -----
 
-I received help from Khan Academy and ChatGPT.  I found a quicksort analysis on Khan Academy.  A portion of this analysis briefly talked about the median-to-three method.  I gave that portion of the analysis to ChatGPT, as I was unsure where the given fractions/percentages were coming from, and ChatGPT explained that they came from the number of possible ways to order a set of numbers.  This gave me the idea of building the table above.  ChatGPT also hinted to me that I need to consider more of what is going on with the values of the elements in the array, not just how the possible pivot elements are ordered, which led me to my answer.
+I received help from Khan Academy, ChatGPT, and Ali.  I found a quicksort analysis on Khan Academy.  A portion of this analysis briefly talked about the median-to-three method.  I gave that portion of the analysis to ChatGPT, as I was unsure where the given fractions/percentages were coming from, and ChatGPT explained that they came from the number of possible ways to order a set of numbers.  This gave me the idea of building the table above.  ChatGPT also hinted to me that I need to consider more of what is going on with the values of the elements in the array, not just how the possible pivot elements are ordered, which led me to my answer.  And Ali helped explain why each combination has a different probability when considering the fact that the array is divided into quarters, not thirds as I had originally thought.  After his brief explanation, I was able to go through the process above and come to my conclusion.
 
 Khan Academy source: https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/analysis-of-quicksort
 
